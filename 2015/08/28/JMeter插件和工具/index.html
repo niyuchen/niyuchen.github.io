@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JMeter插件和工具 | HGPing&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、Java内置性能分析器—JConsole
+jconsole运行环境jconsole是JAVA 5.0开始引入的（java内置）性能分析器，只要当前主机安装配、置好JDK运行环境，它就能直接运行在命令行或GUI shell中。
+
+jconsole运行步骤点击：Windows开始 → 运行 → 输入cmd → 命令提示符中输入jconsole并回车 → 弹出“java监视和管理控制台”。
+
+jco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter插件和工具">
+<meta property="og:url" content="http://blog.hgping.com/2015/08/28/JMeter插件和工具/index.html">
+<meta property="og:site_name" content="HGPing's Blog">
+<meta property="og:description" content="1、Java内置性能分析器—JConsole
+jconsole运行环境jconsole是JAVA 5.0开始引入的（java内置）性能分析器，只要当前主机安装配、置好JDK运行环境，它就能直接运行在命令行或GUI shell中。
+
+jconsole运行步骤点击：Windows开始 → 运行 → 输入cmd → 命令提示符中输入jconsole并回车 → 弹出“java监视和管理控制台”。
+
+jco">
+<meta property="og:image" content="http://blog.hgping.com/images/jconsole_console.jpg">
+<meta property="og:image" content="http://blog.hgping.com/images/jconsole_lj.jpg">
+<meta property="og:updated_time" content="2015-09-24T01:58:19.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JMeter插件和工具">
+<meta name="twitter:description" content="1、Java内置性能分析器—JConsole
+jconsole运行环境jconsole是JAVA 5.0开始引入的（java内置）性能分析器，只要当前主机安装配、置好JDK运行环境，它就能直接运行在命令行或GUI shell中。
+
+jconsole运行步骤点击：Windows开始 → 运行 → 输入cmd → 命令提示符中输入jconsole并回车 → 弹出“java监视和管理控制台”。
+
+jco">
+  
+    <link rel="alternative" href="/atom.xml" title="HGPing&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <!--引入百度统计-->
+  
+  <!--引入浏览计数-->
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  <!--totop-->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HGPing&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">酱油程序猿，干过开发做过实施现做测试</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/books">书籍</a>
+        
+          <a class="main-nav-link" href="/category">分类</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.hgping.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JMeter插件和工具" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/28/JMeter插件和工具/" class="article-date">
+  <time datetime="2015-08-28T01:32:54.000Z" itemprop="datePublished">2015-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JMeter/">JMeter</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JMeter插件和工具
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、Java内置性能分析器—JConsole">1、Java内置性能分析器—JConsole</h2><ul>
+<li><p>jconsole运行环境<br>jconsole是JAVA 5.0开始引入的（java内置）性能分析器，只要当前主机安装配、置好JDK运行环境，它就能直接运行在<code>命令行</code>或<code>GUI shell</code>中。</p>
+</li>
+<li><p>jconsole运行步骤<br>点击：Windows开始 → 运行 → 输入cmd → 命令提示符中输入jconsole并回车 → 弹出“java监视和管理控制台”。</p>
+</li>
+<li><p>jconsole本地测试<br>在“java监视和管理控制台” → 勾选“本地进程” → 点击“sun.tools.jconsole.JConsloe” → 点击“连接”后进入监控界面（见图1）。<br><img src="/images/jconsole_console.jpg" alt="" title="Java监视和管理控制台"></p>
+<div align="center">图1 Java监视和管理控制台</div>
+
+<p>注：在Java 6.0版本后，本地开启jconsole连接才无需设置参数。</p>
+</li>
+<li><p>jconsole远程测试—未完待续<br>在“java监视和管理控制台” → 勾选“远程进程”输入远程服务器的用法（见图2） → 再输入<code>远程进程</code>和<code>用户名</code>、<code>密码</code> → 点击“连接”可进入监控界面。<br><img src="/images/jconsole_lj.jpg" alt="" title="Jconsole新建连接"></p>
+  <div align="center">图2 Jconsole新建连接</div>
+
+<p>注：若点击“连接”时弹出“安全连接失败，是否以不安全的方式重试？”提示，点击“不安全”即可连接进入监控界面。　</p>
+</li>
+</ul>
+<h2 id="2、JMeter监控内存和CUP的插件—JMeterPlugins">2、JMeter监控内存和CUP的插件—<a href="http://www.jmeter-plugins.org/" target="_blank" rel="external">JMeterPlugins</a></h2><p>  JMeter对于内存和CPU的监控存在不足，通过系统的资源监控器来观察，一闪而过又不会记录下来，不便于查阅和对比。Google开发了一款专门用于监控的JMeter插件—JMeterPlugins，弥补了JMeter这方面的不足。【以Windows为例介绍JMeter-Plugins】</p>
+<ul>
+<li><p>JMeterPlugins的下载<br>当前版本：JMeterPlugins-Standard-1.3.0.zip(标准版)<br>下载地址：<a href="http://www.jmeter-plugins.org/downloads/all/" target="_blank" rel="external">http://www.jmeter-plugins.org/downloads/all/</a></p>
+</li>
+<li><p>JMeterPlugins的配置<br>解压JMeterPlugins-Standard-1.3.0.zip,仅将解压包<code>lib\ext\</code>目录下的<code>JMeterPlugins-Standard.jar</code>复制到JMeter的<code>bin\ext\</code>目录下即完成配置。</p>
+</li>
+<li><p>JMeterPlugins的使用<br>首先运行JMeter：双击bin目录jmeter.bat → 弹出命令行窗口 → 显示<code>Apache JMeter</code>窗口。<br>其次添加监控内存监听器：右击测试计划 → 添加(add) → 监听器(listener) → “jp@pc - PerfMon Metrics Collector”。<br>再次运行ServerAgent中ServerAgent.bat<br>最后启动监控内存需要使用监听器中：“jp@gc - PerfMon Metrics Collector”。</p>
+</li>
+</ul>
+<p>—未完待续</p>
+<hr>
+<h3 id="参考文献">参考文献</h3><p><a href="http://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="external">JMeter下载地址</a><br><a href="http://www.51testing.com/html/11/n-854111-3.html" target="_blank" rel="external">JMeter Tutorial的安装和具体操作</a><br><a href="http://blog.csdn.net/lzqinfen/article/details/37873025" target="_blank" rel="external">Jmeter—google plugin插件监控被测系统资源方法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.hgping.com/2015/08/28/JMeter插件和工具/" data-id="ciftb4ttu000z44o0iw6u9mcp" class="article-share-link">Share</a>
+      
+        <a href="http://blog.hgping.com/2015/08/28/JMeter插件和工具/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/01/2015-9-1-liunx软件安装和常用工具介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux软件安装和常用工具介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/27/Web界面边界输入测试/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Web界面输入边界异常测试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+<!--<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div> -->
+  	<div class="ds-thread" data-thread-key="post-JMeter插件和工具" data-title="JMeter插件和工具" data-url="http://blog.hgping.com/2015/08/28/JMeter插件和工具/"></div>
+  <!-- 多说评论框 end -->
+  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"hgping"};
+  	(function() {
+  		var ds = document.createElement('script');
+  		ds.type = 'text/javascript';ds.async = true;
+  		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+  		ds.charset = 'UTF-8';
+  		(document.getElementsByTagName('head')[0]
+  		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+  	})();
+  	</script>
+  <!-- 多说公共JS代码 end -->
+</section>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/09/24/Vagrant入门基础实例应用/">Vagrant入门基础实例应用</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/21/个人百度经验汇总链接/">个人百度经验汇总链接</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/09/VMware虚拟机中忘记开机密码怎么办/">VMware虚拟机中忘记开机密码怎么办</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/08/JMeter异常解决WARNING-Could-not-open-create-prefs-root-1/">JMeter异常解决WARNING: Could not open/create prefs root ..</a>
+          </li>
+        
+          <li>
+            <a href="/2015/09/03/高效能人士的七个习惯/">《高效能人士的七个习惯》</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JMeter/">JMeter</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vagrant/">Vagrant</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/书籍/">书籍</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试模板/">测试模板</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/百度经验/">百度经验</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/虚拟机/">虚拟机</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/我的阅读/" style="font-size: 10px;">我的阅读</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <li><a href="http://www.ruanyifeng.com/home.html">阮一峰的Blog</a></li>
+      <li><a href="http://blog.lvelyn.com">陈立的Blog</a></li>
+      <li><a href="http://blog.tangjiujun.com">唐久军的Blog</a></li>
+      <li><a href="http://www.songyuchao.com">宋禹潮的Blog</a></li>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" style="text-align: center">
+      &copy; 2015 何国平<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+       <span id="busuanzi_container_site_uv">
+           | 本站总访问量<span id="busuanzi_value_site_pv"></span>次
+       </span>
+       <span id="busuanzi_container_site_uv">
+           | 您是第<span id="busuanzi_value_site_uv"></span>位访客
+       </span>
+    </div>
+  </div>
+
+
+
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/books" class="mobile-nav-link">书籍</a>
+  
+    <a href="/category" class="mobile-nav-link">分类</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'hgping';
+  
+  var disqus_url = 'http://blog.hgping.com/2015/08/28/JMeter插件和工具/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
